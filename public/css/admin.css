@@ -1,0 +1,1104 @@
+/* =========================================================
+   ADMIN.CSS - FULL MERGED (14 Sections)
+   Theme: primary-blue #0B3D91, yellow #FFE600
+   Background: #f8f9fa (Bootstrap gray)
+   Updated: 2025-12-24 - Removed yellow backgrounds
+========================================================= */
+
+
+/* =========================================================
+   1. RESET + COLOR SYSTEM
+   → Khai báo biến màu + reset body + font
+========================================================= */
+:root {
+    /* Bảng màu chuẩn hệ thống */
+    --blue-dark-bg: #0033A0;          /* Nền xanh dương đậm */
+    --blue-dark-shadow: #0B3D91;     /* Xanh dương đậm (đổ bóng) */
+    --blue-dark-hover: #0C4CB8;      /* Hover state */
+    --green-light: #8EDC6E;           /* Xanh lá nhạt */
+    --green-dark: #5FB84A;            /* Xanh lá đậm */
+    --yellow-light: #FFF3A0;         /* Vàng nhạt */
+    --yellow-bright: #FFE600;         /* Vàng tươi */
+    
+    /* Biến màu chính (tương thích ngược) */
+    --primary-blue: #0B3D91;
+    --primary-blue-dark: #0033A0;
+    --primary-blue-hover: #0C4CB8;
+    --accent-yellow: #FFE600;
+    --soft-yellow: #FFF3A0;
+    
+    /* Màu hệ thống dựa trên bảng màu */
+    --success: #5FB84A;
+    --success-light: #8EDC6E;
+    --danger: #B84A5F;
+    --warning: #FFE600;
+    --warning-light: #FFF3A0;
+    --info: #0B3D91;
+    --info-dark: #0033A0;
+    
+    /* Màu text và border */
+    --text-dark: #1f1f1f;
+    --text-light: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #FFF3A0;
+    color: var(--text-dark);
+    overflow-x: hidden;
+}
+
+
+
+/* =========================================================
+   2. SIDEBAR + LAYOUT
+   → Thiết kế sidebar: màu, kích thước, logo, avatar admin
+========================================================= */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    left: 0; top: 0;
+    background: var(--primary-blue);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 100;
+}
+
+/* =========================================================
+   SIDEBAR HEADER - LOGO & ADMIN INFO (Modern Design)
+========================================================= */
+.sidebar-header {
+    padding: 24px 16px;
+    background: linear-gradient(135deg, var(--primary-blue-dark) 0%, var(--primary-blue) 100%);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.admin-info-modern {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.admin-info-modern:hover {
+    background: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.admin-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent-yellow) 0%, #ffd500 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.admin-avatar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.admin-avatar::after {
+    content: '📷';
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: var(--primary-blue);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border: 2px solid white;
+}
+
+.admin-avatar:hover::after {
+    opacity: 1;
+}
+
+.admin-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.admin-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+.menu { 
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 8px;
+}
+.menu::-webkit-scrollbar {
+    width: 6px;
+}
+.menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+.menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+.menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+
+
+/* =========================================================
+   3. SIDEBAR MENU ITEM + HOVER + ACTIVE
+   → Style cho item menu, hiệu ứng hover, active
+========================================================= */
+.menu-item,
+.submenu-title,
+.submenu-child a {
+    transition: background 0.25s ease, padding-left 0.25s ease;
+}
+
+.menu-item {
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    cursor: pointer;
+    align-items: center;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.menu-item:hover {
+    background: var(--primary-blue-hover);
+    padding-left: 28px;
+}
+
+.menu-item.active {
+    background: var(--accent-yellow);
+    color: var(--text-dark);
+    font-weight: bold;
+    position: relative;
+}
+.menu-item.active::before {
+    content: "";
+    width: 6px;
+    height: 100%;
+    background: var(--primary-blue-dark);
+    position: absolute;
+    left: 0; top: 0;
+    border-radius: 0 4px 4px 0;
+}
+
+
+
+/* =========================================================
+   4. SUBMENU + SUBMENU-CHILD
+   → Mở/đóng submenu cấp 1 và submenu-child cấp 2
+========================================================= */
+.submenu {
+    display: none;
+    background: rgba(255,255,255,0.05);
+}
+
+.submenu-title {
+    padding: 10px 35px;
+    cursor: pointer;
+    color: #f1f1f1;
+    font-size: 14px;
+}
+.submenu-title:hover {
+    background: var(--primary-blue-hover);
+    padding-left: 42px;
+}
+
+.submenu-child {
+    display: none;
+    background: rgba(0,0,0,0.15);
+}
+.submenu-child a {
+    padding: 8px 50px;
+    display: block;
+    font-size: 13px;
+    color: #dcdcdc;
+    text-decoration: none;
+}
+.submenu-child a:hover {
+    background: rgba(255,255,255,0.2);
+    padding-left: 42px;
+}
+
+.active-sub {
+    background: var(--accent-yellow) !important;
+    color: var(--text-dark) !important;
+    font-weight: bold;
+    position: relative;
+}
+.active-sub::before {
+    content: "";
+    width: 5px;
+    height: 100%;
+    background: var(--primary-blue-dark);
+    position: absolute;
+    left: 0; top: 0;
+}
+
+
+
+/* =========================================================
+   5. LOGOUT BUTTON
+   → Style khu vực logout cuối sidebar
+========================================================= */
+.logout {
+    flex-shrink: 0;
+    padding: 16px 20px 20px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+.logout-btn {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+    box-sizing: border-box;
+}
+.logout-btn:hover {
+    background: #B84A5F;
+}
+
+
+
+/* =========================================================
+   6. MAIN CONTENT
+   → Layout phần nội dung khi có sidebar fixed
+========================================================= */
+.main {
+    margin-left: 260px;
+    padding: 20px;
+    width: calc(100% - 260px);
+    background: #f8f9fa;
+    min-height: 100vh;
+}
+
+
+
+/* =========================================================
+   7. FORM SEARCH + BUTTONS
+   → Style tìm kiếm, filter, các nút trên list page
+========================================================= */
+.search-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.search-row .form-control,
+.search-row .form-select {
+    height: 45px;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #fff;
+    padding: 10px 12px;
+    border: 1px solid rgba(0,0,0,0.08);
+}
+
+.btn-search {
+    height: 45px;
+    padding: 0 25px;
+    border-radius: 10px;
+    background: var(--primary-blue);
+    font-weight: bold;
+    color: white;
+    border: none;
+}
+.btn-search:hover { background: var(--primary-blue-hover); }
+
+.btn-add {
+    height: 45px;
+    padding: 0 22px;
+    border-radius: 10px;
+    background: var(--accent-yellow);
+    border: none;
+    font-weight: bold;
+    color: var(--text-dark);
+    font-size: 16px;
+}
+.btn-add:hover { background: #ffd500; }
+
+
+
+/* =========================================================
+   8. TABLE + DATATABLE STYLE
+   → Style bảng chung + bảng roles + custom hover
+========================================================= */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+}
+
+.table td {
+    padding: 10px 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(0,0,0,0.04);
+}
+
+/* DataTable enhancements */
+.table.dataTable thead th {
+    border-bottom: none !important;
+}
+.table.dataTable tbody tr:hover {
+    background: rgba(0,0,0,0.04) !important;
+}
+
+/* ===== ROLE TABLE BEAUTIFY ===== */
+.table-role {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.table-role thead {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.table-role th {
+    padding: 14px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.table-role td {
+    padding: 14px;
+    font-size: 15px;
+    color: var(--text-dark);
+}
+
+.table-role tbody tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.table-role tbody tr:hover {
+    background: rgba(11, 61, 145, 0.07);
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d4d4d4;
+}
+.dataTables_wrapper .dataTables_length select {
+    border-radius: 8px;
+    padding: 6px 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: 6px !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary-blue) !important;
+    color: white !important;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--primary-blue-hover) !important;
+    color: white !important;
+}
+
+/* =========================================================
+   CUSTOM PAGINATION STYLE
+   → Style cho phân trang tùy chỉnh (giống y hệt trang Danh sách tài khoản Admin)
+========================================================= */
+.pagination {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination .page-item {
+    margin: 0 2px;
+    list-style: none;
+}
+
+.pagination .page-link {
+    color: #0B3D91;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.15s ease;
+    min-width: 38px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    line-height: 1.42857143;
+    cursor: pointer;
+}
+
+.pagination .page-link:hover:not(.disabled):not([aria-disabled="true"]) {
+    color: white;
+    background-color: #0B3D91;
+    border-color: #0B3D91;
+    text-decoration: none;
+}
+
+.pagination .page-item.active .page-link {
+    color: white;
+    background-color: #0B3D91;
+    border-color: #0B3D91;
+    font-weight: 600;
+    cursor: default;
+    z-index: 1;
+}
+
+.pagination .page-item.active .page-link:hover {
+    color: white;
+    background-color: #0B3D91;
+    border-color: #0B3D91;
+}
+
+.pagination .page-item.disabled .page-link,
+.pagination .page-item.disabled .page-link:hover,
+.pagination .page-item.disabled .page-link:focus {
+    color: #6c757d;
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Đảm bảo phân trang hiển thị đúng trong container */
+nav[aria-label="Page navigation"] {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+nav[aria-label="Page navigation"] .pagination {
+    margin: 0;
+}
+
+
+
+/* =========================================================
+   9. BUTTON SYSTEM
+   → Style chung cho button: edit / delete / reset
+========================================================= */
+button, .btn { 
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+button:hover, .btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-sm { padding: 6px 12px; border-radius: 8px; }
+
+/* Nút Edit (vàng) */
+.btn-warning { background:#FFE600; color:#000; }
+.btn-warning:hover { background:#ffd500; }
+
+/* Nút Reset password (xanh) */
+.btn-reset-mk { background:#0B3D91 !important; color:white !important; }
+.btn-reset-mk:hover { background:#0033A0 !important; }
+
+/* Nút Lock/Unlock */
+.btn-toggle-status.btn-dark { background:#0B3D91 !important; color:white !important; }
+.btn-toggle-status.btn-dark:hover { background:#0033A0 !important; }
+
+/* Nút Unlock (xanh lá) */
+.btn-toggle-status.btn-success { background:#5FB84A !important; color:white !important; }
+.btn-toggle-status.btn-success:hover { background:#8EDC6E !important; }
+
+/* Nút Delete (đỏ - giữ mặc định) */
+.btn-danger { background:#B84A5F; color:white; }
+.btn-danger:hover { background:#9A3D4F; }
+
+/* Fallback cho các class khác */
+.btn-secondary:not(.btn-reset-mk) { background:#6c757d; color:white; }
+.btn-secondary:not(.btn-reset-mk):hover { background:#5a6268; }
+
+.btn-dark:not(.btn-toggle-status) { background:#1f2937; color:white; }
+.btn-dark:not(.btn-toggle-status):hover { background:#111827; }
+
+
+
+/* =========================================================
+   10. BADGES + STATUS DOT
+   → Badge role + trạng thái online/offline
+========================================================= */
+.badge {
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.role-badge { padding: 6px 12px; border-radius: 12px; font-weight:700; color:white !important; }
+.role-1 {
+    background: #e63946 !important;
+    color: white !important;
+}
+.role-2 {
+    background: #1d4ed8 !important;
+    color: white !important;
+}
+.role-3 {
+    background: #6c757d !important;
+    color: white !important;
+}
+
+.table thead {
+    background: var(--primary-blue) !important;
+    color: white !important;
+}
+
+.role-default { background:#6c757d !important; }
+
+.status-dot { width:10px; height:10px; border-radius:50%; display:inline-block; margin-right:6px; }
+.status-online { background:#10b981; }
+
+
+
+/* =========================================================
+   11. MODAL UI
+   → Style modal header, focus, footer
+========================================================= */
+.modal-header-custom {
+    background: var(--primary-blue);
+    color: white !important;
+    padding: 15px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.modal-header-custom .modal-title {
+    color: white !important;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.modal-header-custom .btn-close {
+    filter: brightness(0) invert(1);
+}
+
+.form-label-blue {
+    background: var(--primary-blue);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: 6px;
+}
+
+.modal-body input.form-control:focus,
+.modal-body textarea.form-control:focus,
+.modal-body select.form-select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(11,61,145,0.14);
+}
+
+.modal-footer-custom {
+    background: #f8f9fa;
+    padding: 12px 20px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
+/* =========================================================
+   12. MODAL ANIMATION
+   → Animation fade slide xuống khi mở modal (removed to fix flickering)
+   → Fixed version is at the end of file
+========================================================= */
+.modal-backdrop.show {
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+}
+
+
+
+/* =========================================================
+   13. DASHBOARD + CHART BOX
+   → Style card thống kê + box biểu đồ dashboard
+========================================================= */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+.dashboard-card {
+    background: white;
+    border-left: 6px solid var(--primary-blue);
+    padding: 18px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: 0.25s ease;
+}
+.dashboard-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+.dashboard-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary-blue);
+}
+.dashboard-card-value {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--primary-blue-dark);
+}
+
+.chart-box {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.chart-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary-blue-dark);
+}
+
+
+
+/* =========================================================
+   14. UTILITIES
+   → Các class tiện ích nhỏ: text-muted, center, hidden…
+========================================================= */
+.text-muted { color:#6b7280; }
+.small { font-size:13px; }
+.center { text-align:center; }
+.hidden { display:none !important; }
+
+.btn-add-role {
+    background: var(--primary-blue);
+    color: white;
+    border-radius: 10px;
+    padding: 10px 18px;
+    font-weight: 600;
+    border: none;
+    transition: 0.25s ease;
+}
+.btn-add-role:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+}
+
+
+
+/* =========================================================
+   BEAUTIFY ROLES PAGE
+   → Style nâng cao cho trang vai trò
+========================================================= */
+.btn-add-role,
+.btn-add {
+    background: var(--primary-blue);
+    padding: 12px 20px;
+    color: white;
+    font-size: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(11, 61, 145, 0.25);
+    transition: 0.25s ease;
+}
+.btn-add-role:hover,
+.btn-add:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+}
+
+.table-role {
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+.table-role thead {
+    background: var(--primary-blue);
+    color: white;
+}
+
+.table-role tbody tr {
+    transition: 0.25s ease;
+}
+
+.table-role tbody tr:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+    transform: scale(1.003);
+}
+
+.role-badge {
+    padding: 8px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+    display: inline-block;
+    color: #ffffff !important;
+}
+
+.role-1 { background: #0B3D91 !important; color: #ffffff !important; }
+.role-2 { background: #5FB84A !important; color: #ffffff !important; }
+.role-3 { background: #6c757d !important; color: #ffffff !important; }
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+.status-online { background: #5FB84A; }
+
+.btn-warning.btn-sm {
+    background: #FFE600;
+    color: #000;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-weight: 600;
+    border: none;
+    transition: 0.25s ease;
+}
+.btn-warning.btn-sm:hover {
+    background: #ffd500;
+    transform: translateY(-2px);
+}
+
+.btn-danger.btn-sm {
+    background: #B84A5F;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+.btn-danger.btn-sm:hover {
+    background: #9A3D4F;
+    transform: translateY(-2px);
+}
+
+.table-role td:last-child {
+    text-align: center;
+}
+
+.table-role thead th {
+    color: var(--primary-blue) !important;
+    background: #eaf2ff !important;
+    font-weight: 700;
+}
+
+.btn-add-role, 
+.btn-add {
+    margin-bottom: 18px !important;
+}
+
+.table-role {
+    margin-top: 10px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.table-role thead th {
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
+}
+
+
+/* =========================================================
+   1. HỘP QUY ƯỚC THEO THEME VÀNG - XANH
+========================================================= */
+.assign-info-box {
+    background: #E8F3FF; /* xanh dương nhạt */
+    padding: 18px 22px;
+    border-left: 6px solid var(--primary-blue);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    font-size: 15px;
+}
+
+
+
+/* =========================================================
+   2. FORM TÌM KIẾM
+========================================================= */
+.assign-input,
+.assign-select {
+    height: 45px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+.assign-btn-search {
+    height: 45px;
+    padding: 0 25px;
+    font-weight: 600;
+    background: var(--primary-blue);
+    border-radius: 10px;
+    border: none;
+}
+.assign-btn-search:hover {
+    background: var(--primary-blue-hover);
+}
+
+
+/* =========================================================
+   3. BẢNG THEO THEME ADMIN
+========================================================= */
+.assign-table {
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.assign-table thead {
+    background: var(--primary-blue) !important;
+    color: white !important;
+}
+
+.assign-table tbody tr:hover {
+    background: rgba(0, 0, 0, 0.04) !important;
+}
+
+
+/* =========================================================
+   4. BADGE VAI TRÒ
+========================================================= */
+.role-badge {
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 700;
+    color: #ffffff !important;
+}
+
+/* Mapping role */
+.role-1 { background: #e63946 !important; color: #ffffff !important; } /* Admin */
+.role-2 { background: #1d4ed8 !important; color: #ffffff !important; } /* Student */
+.role-3 { background: #6c757d !important; color: #ffffff !important; } /* Guest */
+
+
+/* =========================================================
+   5. BUTTON CẬP NHẬT
+========================================================= */
+.assign-btn-update {
+    background: var(--primary-blue);
+    color: white;
+    padding: 7px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: none;
+}
+.assign-btn-update:hover {
+    background: var(--primary-blue-hover);
+    transform: translateY(-2px);
+}
+
+/* ===== BADGE MATERIAL DESIGN ===== */
+.role-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 30px; /* Bo tròn lớn */
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    background: #e5e7eb;
+    color: #ffffff !important;
+}
+
+/* Màu theo vai trò (nền đậm + chữ trắng) */
+.role-admin {
+    background: #e63946 !important;
+    color: #ffffff !important;
+}
+
+.role-student {
+    background: #1d4ed8 !important;
+    color: #ffffff !important;
+}
+
+.role-guest {
+    background: #6c757d !important;
+    color: #ffffff !important;
+}
+.assign-success-box {
+    background: #e0f7e9;
+    border-left: 6px solid #0f9d58;
+    color: #0f5132;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+/* =========================================================
+   FIX SUBMENU ACTIVE (highlight vàng full ô + bỏ underline)
+========================================================= */
+
+/* Không còn underline cho submenu */
+.submenu-title,
+.submenu-child a {
+    text-decoration: none !important;
+}
+
+/* Khi submenu được active */
+.submenu-title.active-sub,
+.submenu-child a.active-sub {
+    background: var(--accent-yellow) !important;
+    color: var(--text-dark) !important;
+    font-weight: 700 !important;
+    padding-left: 35px !important; /* Canh thẳng với mục “Danh sách vai trò” */
+    position: relative;
+}
+
+/* Thanh màu xanh đậm bên trái khi đang active */
+.submenu-title.active-sub::before,
+.submenu-child a.active-sub::before {
+    content: "";
+    width: 6px;
+    height: 100%;
+    background: var(--primary-blue-dark);
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 0 4px 4px 0;
+}
+/* Bắt submenu chiếm full chiều ngang */
+.submenu-title,
+.submenu-child a {
+    display: block !important;
+    width: 100% !important;
+}
+
+/* Khi active thì full vàng */
+.submenu-title.active-sub,
+.submenu-child a.active-sub {
+    background: var(--accent-yellow) !important;
+    color: var(--text-dark) !important;
+    font-weight: 700 !important;
+}
+/* ==== FIX MODAL HIỆN KHÔNG LÊN DO BỊ CHE ==== */
+.modal {
+    z-index: 99999 !important;
+}
+
+.modal-backdrop {
+    z-index: 99998 !important;
+}
+
+body.modal-open {
+    overflow: hidden !important;
+}
+
+/* Cho phép transitions cho form elements */
+.modal .form-control:focus {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.modal .btn:hover {
+    transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+/* END OF FILE */

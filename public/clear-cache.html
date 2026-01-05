@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ Hướng dẫn xóa cache</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+        }
+        .warning-icon {
+            font-size: 64px;
+            text-align: center;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        h1 {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .method {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .method h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        .shortcut {
+            background: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            margin: 5px;
+            font-size: 18px;
+        }
+        .steps {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+        .steps li {
+            counter-increment: step-counter;
+            margin-bottom: 10px;
+            padding-left: 40px;
+            position: relative;
+        }
+        .steps li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3498db;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        .result {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        .result h3 {
+            color: #155724;
+            margin-bottom: 10px;
+        }
+        .result ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .result li {
+            padding: 5px 0;
+            color: #155724;
+        }
+        .result li::before {
+            content: "✅ ";
+            margin-right: 5px;
+        }
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="warning-icon">⚠️</div>
+        <h1>VẪN THẤY MÀU VÀNG?</h1>
+        <p class="subtitle">Hãy xóa cache trình duyệt để thấy giao diện mới!</p>
+
+        <div class="method">
+            <h2>🚀 Cách 1: Nhanh nhất (5 giây)</h2>
+            <p>Nhấn tổ hợp phím:</p>
+            <div style="margin-top: 10px;">
+                <span class="shortcut">Ctrl + Shift + R</span>
+                <span style="margin: 0 10px;">hoặc</span>
+                <span class="shortcut">Ctrl + F5</span>
+            </div>
+        </div>
+
+        <div class="method">
+            <h2>🧹 Cách 2: Xóa cache đầy đủ (30 giây)</h2>
+            <ol class="steps">
+                <li>Nhấn <strong>Ctrl + Shift + Delete</strong></li>
+                <li>Chọn <strong>"Cached images and files"</strong></li>
+                <li>Chọn thời gian: <strong>"All time"</strong></li>
+                <li>Click <strong>"Clear data"</strong></li>
+                <li>Đóng và mở lại trình duyệt</li>
+                <li>Truy cập lại trang</li>
+            </ol>
+        </div>
+
+        <div class="method">
+            <h2>🕵️ Cách 3: Test nhanh (Incognito)</h2>
+            <p>Nhấn tổ hợp phím:</p>
+            <div style="margin-top: 10px;">
+                <span class="shortcut">Ctrl + Shift + N</span>
+            </div>
+            <p style="margin-top: 10px; color: #7f8c8d; font-size: 14px;">
+                Chrome/Edge: Ctrl + Shift + N | Firefox: Ctrl + Shift + P
+            </p>
+        </div>
+
+        <div class="result">
+            <h3>✨ Kết quả sau khi xóa cache:</h3>
+            <ul>
+                <li>Background: Xám nhạt (#f8f9fa) - Chuyên nghiệp</li>
+                <li>Cards: Trắng sạch - Dễ nhìn</li>
+                <li>Tables: Hover xám nhẹ - Tinh tế</li>
+                <li>Không còn màu vàng chói mắt</li>
+            </ul>
+        </div>
+
+        <div class="center">
+            <a href="/" class="btn">← Quay lại trang chủ</a>
+        </div>
+
+        <p style="text-align: center; margin-top: 30px; color: #7f8c8d; font-size: 14px;">
+            Cập nhật: 24/12/2025 | Version 2.0
+        </p>
+    </div>
+</body>
+</html>
+

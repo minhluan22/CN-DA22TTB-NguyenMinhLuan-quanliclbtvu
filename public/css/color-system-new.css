@@ -1,0 +1,265 @@
+/* =========================================================
+   HỆ THỐNG MÀU CHUẨN CHUYÊN NGHIỆP - CLBWeb Laravel
+   Updated: 2025-12-25
+   Loại bỏ hoàn toàn màu vàng nhạt (#FFF3A0, #FFF7B0)
+========================================================= */
+
+:root {
+    /* Bảng màu chính */
+    --blue-dark-bg: #0033A0;
+    --blue-dark-shadow: #0B3D91;
+    --blue-dark-hover: #0C4CB8;
+    --green-light: #8EDC6E;
+    --green-dark: #5FB84A;
+    --yellow-bright: #FFE600;
+    --yellow-dark: #ffd500;
+    
+    /* Background colors - Professional */
+    --bg-main: #f8f9fa;              /* Xám nhạt Bootstrap */
+    --bg-card: #ffffff;              /* Trắng tinh */
+    --bg-table-hover: rgba(0,0,0,0.04);  /* Xám rất nhạt */
+    --bg-pending: rgba(255, 193, 7, 0.1); /* Vàng Bootstrap nhạt */
+    
+    /* Alert colors - Professional */
+    --alert-warning-bg: #fff9e6;     /* Vàng rất nhạt */
+    --alert-danger-bg: #ffe6ea;      /* Hồng nhạt */
+    --alert-success-bg: #e8f5e9;     /* Xanh lá nhạt */
+    --alert-info-bg: #e3f2fd;        /* Xanh dương nhạt */
+    
+    /* Badge colors */
+    --badge-warning: #FFE600;        /* Vàng tươi */
+    --badge-cancelled: #6c757d;      /* Xám */
+    
+    /* System colors */
+    --success: #5FB84A;
+    --success-light: #8EDC6E;
+    --danger: #B84A5F;
+    --warning: #FFE600;
+    --info: #0B3D91;
+    --primary: #0B3D91;
+    --secondary: #6c757d;
+    
+    /* Text colors */
+    --text-dark: #1f1f1f;
+    --text-light: #ffffff;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+}
+
+/* =========================================================
+   BODY & MAIN BACKGROUND
+========================================================= */
+body {
+    background: var(--bg-main) !important;
+}
+
+.main {
+    background: var(--bg-main) !important;
+}
+
+/* =========================================================
+   CARDS - Professional White
+========================================================= */
+.card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border);
+}
+
+.dashboard-card {
+    background: var(--bg-card) !important;
+}
+
+/* =========================================================
+   TABLE HOVER - Subtle Gray
+========================================================= */
+.table-hover tbody tr:hover {
+    background-color: var(--bg-table-hover) !important;
+}
+
+/* Table pending rows - Bootstrap warning light */
+.table-warning {
+    background-color: var(--bg-pending) !important;
+}
+
+/* =========================================================
+   BOOTSTRAP BADGE COLORS OVERRIDE
+========================================================= */
+.bg-success {
+    background-color: var(--success) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-danger {
+    background-color: var(--danger) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-warning {
+    background-color: var(--badge-warning) !important;
+    color: var(--text-dark) !important;
+}
+
+.bg-info {
+    background-color: var(--info) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-primary {
+    background-color: var(--primary) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+    color: var(--text-light) !important;
+}
+
+/* Badge with text-dark for readability */
+.badge.bg-warning.text-dark {
+    background-color: var(--badge-warning) !important;
+    color: var(--text-dark) !important;
+}
+
+/* =========================================================
+   BOOTSTRAP BUTTON COLORS OVERRIDE
+========================================================= */
+.btn-success {
+    background-color: var(--success) !important;
+    border-color: var(--success) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-success:hover {
+    background-color: var(--success-light) !important;
+    border-color: var(--success-light) !important;
+}
+
+.btn-danger {
+    background-color: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-danger:hover {
+    background-color: #9A3D4F !important;
+    border-color: #9A3D4F !important;
+}
+
+.btn-warning {
+    background-color: var(--badge-warning) !important;
+    border-color: var(--badge-warning) !important;
+    color: var(--text-dark) !important;
+}
+
+.btn-warning:hover {
+    background-color: var(--yellow-dark) !important;
+    border-color: var(--yellow-dark) !important;
+}
+
+.btn-info {
+    background-color: var(--info) !important;
+    border-color: var(--info) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-info:hover {
+    background-color: var(--blue-dark-bg) !important;
+    border-color: var(--blue-dark-bg) !important;
+}
+
+.btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-dark-bg) !important;
+    border-color: var(--blue-dark-bg) !important;
+}
+
+/* =========================================================
+   BOOTSTRAP ALERT COLORS OVERRIDE - Professional
+========================================================= */
+.alert-success {
+    background-color: var(--alert-success-bg) !important;
+    border-color: var(--success) !important;
+    color: var(--text-dark) !important;
+}
+
+.alert-danger {
+    background-color: var(--alert-danger-bg) !important;
+    border-color: var(--danger) !important;
+    color: var(--text-dark) !important;
+}
+
+.alert-warning {
+    background-color: var(--alert-warning-bg) !important;
+    border-color: var(--badge-warning) !important;
+    color: var(--text-dark) !important;
+}
+
+.alert-info {
+    background-color: var(--alert-info-bg) !important;
+    border-color: var(--info) !important;
+    color: var(--text-dark) !important;
+}
+
+/* =========================================================
+   TEXT COLORS OVERRIDE
+========================================================= */
+.text-success {
+    color: var(--success) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-warning {
+    color: var(--badge-warning) !important;
+}
+
+.text-info {
+    color: var(--info) !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+/* =========================================================
+   MODAL FOOTER - Professional
+========================================================= */
+.modal-footer-custom {
+    background: var(--bg-card) !important;
+}
+
+/* =========================================================
+   TABLE LIGHT HEADER
+========================================================= */
+.table-light {
+    background-color: #f8f9fa !important;
+}
+
+/* =========================================================
+   ENSURE NO YELLOW BACKGROUNDS ANYWHERE
+========================================================= */
+.main,
+.dashboard-card,
+.card,
+.card-body,
+.modal-footer,
+.modal-footer-custom {
+    background: var(--bg-card) !important;
+}
+
+/* Container background */
+.container-fluid {
+    background: transparent !important;
+}
+

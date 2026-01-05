@@ -1,0 +1,489 @@
+:root {
+    /* Bảng màu chuẩn hệ thống */
+    --blue-dark-bg: #0033A0;
+    --blue-dark-shadow: #0B3D91;
+    --blue-dark-hover: #0C4CB8;
+    --green-light: #8EDC6E;
+    --green-dark: #5FB84A;
+    --yellow-light: #FFF3A0;
+    --yellow-bright: #FFE600;
+    
+    /* Biến màu chính */
+    --primary-blue: #0B3D91;
+    --primary-blue-dark: #0033A0;
+    --accent-yellow: #FFE600;
+    --soft-yellow: #FFF3A0;
+    
+    /* Màu hệ thống */
+    --success: #5FB84A;
+    --success-light: #8EDC6E;
+    --danger: #B84A5F;
+    --warning: #FFE600;
+    --warning-light: #FFF3A0;
+    --info: #0B3D91;
+    --info-dark: #0033A0;
+    
+    /* Màu text */
+    --text-dark: #1f1f1f;
+    --text-light: #ffffff;
+}
+
+/* Đảm bảo các biến CSS được áp dụng cho Tailwind và các link */
+a {
+    color: var(--primary-blue);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-blue);
+    opacity: 0.8;
+}
+
+/* Link trong footer */
+.footer-column a {
+    color: white;
+}
+
+.footer-column a:hover {
+    color: var(--accent-yellow);
+}
+
+/* Nền tổng thể */
+body {
+    background: #f5f7fb;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* HEADER */
+/* HEADER – Navbar to và đẹp */
+.guest-header {
+    background: var(--primary-blue);
+    color: white;
+    padding: 22px 0; /* tăng chiều cao navbar */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.guest-header .container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo Container */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Logo Image */
+.header-logo-img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+.header-logo-placeholder {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+/* Logo Text */
+.guest-header .logo {
+    font-size: 22px;       /* chữ lớn hơn */
+    font-weight: 700;
+    margin: 0;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .logo-container {
+        gap: 8px;
+    }
+    
+    .header-logo-img,
+    .header-logo-placeholder {
+        height: 40px;
+        width: 40px;
+    }
+    
+    .guest-header .logo {
+        font-size: 18px;
+    }
+}
+
+/* Menu */
+.guest-header nav a {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 17px;        /* chữ lớn hơn rất nhiều */
+    font-weight: 500;
+}
+
+.guest-header nav a:hover {
+    color: var(--accent-yellow);
+}
+
+/* Nút login & register - Đẹp và nhất quán */
+.btn-login,
+.btn-register {
+    padding: 12px 28px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 15px;
+    border: 2px solid var(--accent-yellow);
+    background: transparent;
+    color: var(--text-light) !important; /* Đảm bảo chữ trắng */
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-left: 12px;
+}
+
+/* Hover effect đẹp - Đảm bảo chữ luôn hiển thị rõ */
+.btn-login:hover,
+.btn-register:hover {
+    background: var(--accent-yellow);
+    color: var(--primary-blue) !important; /* Chữ xanh đậm khi hover - rõ ràng */
+    border-color: var(--accent-yellow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 230, 0, 0.4);
+}
+
+/* Focus state */
+.btn-login:focus,
+.btn-register:focus {
+    outline: none;
+    color: var(--text-light) !important;
+}
+
+/* Active state */
+.btn-login:active,
+.btn-register:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(255, 230, 0, 0.3);
+    background: var(--accent-yellow);
+    color: var(--primary-blue) !important;
+}
+
+
+/* MAIN */
+main {
+    min-height: 60vh;
+}
+
+/* FOOTER MỚI */
+.guest-footer {
+    background: var(--primary-blue, #0B3D91);
+    color: var(--text-light, #ffffff);
+    padding-top: 35px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 100;
+    box-sizing: border-box;
+}
+
+/* Footer Credits Section - Dòng 1 và 2 - Nổi bật hơn - Ở giữa footer */
+.footer-credits {
+    width: 100%;
+    text-align: center;
+    padding: 20px 16px 24px 16px;
+    border-top: 2px solid rgba(255, 230, 0, 0.3);
+    border-bottom: 2px solid rgba(255, 230, 0, 0.3);
+    margin: 24px 0;
+    background: linear-gradient(135deg, rgba(255, 230, 0, 0.1) 0%, rgba(255, 230, 0, 0.05) 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-credits::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-yellow, #FFE600);
+    border-radius: 0 0 3px 3px;
+}
+
+.footer-credits::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-yellow, #FFE600);
+    border-radius: 3px 3px 0 0;
+}
+
+.credits-main {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 8px 0;
+    line-height: 1.5;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+}
+
+.credits-author {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent-yellow, #FFE600);
+    margin: 0;
+    line-height: 1.5;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px;
+    padding-bottom: 28px;
+}
+
+.footer-column h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--accent-yellow, #FFE600);
+    letter-spacing: 0.5px;
+}
+
+.footer-column h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--accent-yellow, #FFE600);
+}
+
+.footer-column p {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.footer-column a {
+    display: block;
+    margin-bottom: 8px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 1.8;
+    transition: all 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--accent-yellow, #FFE600);
+    padding-left: 4px;
+}
+
+.footer-bottom {
+    background: #072d6c;
+    text-align: center;
+    padding: 14px 20px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .footer-credits {
+        padding: 16px 12px 20px 12px;
+        margin-bottom: 20px;
+    }
+
+    .footer-credits::before {
+        width: 50px;
+        height: 2px;
+    }
+
+    .credits-main {
+        font-size: 14px;
+    }
+
+    .credits-author {
+        font-size: 20px;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 20px 24px 20px;
+        width: calc(100% - 40px);
+    }
+
+    .guest-footer {
+        padding-top: 28px;
+    }
+
+    .footer-column h3,
+    .footer-column h4 {
+        margin-bottom: 10px;
+    }
+}
+
+/* Custom classes for colors - Using !important to override Tailwind */
+.text-primary-blue {
+    color: var(--primary-blue) !important;
+}
+
+.bg-primary-blue {
+    background-color: var(--primary-blue) !important;
+}
+
+.bg-accent-yellow {
+    background-color: var(--accent-yellow) !important;
+}
+
+.text-accent-yellow {
+    color: var(--accent-yellow) !important;
+}
+
+.bg-soft-yellow {
+    background-color: var(--soft-yellow) !important;
+}
+
+.text-text-dark {
+    color: var(--text-dark) !important;
+}
+
+.text-text-light {
+    color: var(--text-light) !important;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-yellow {
+    background-color: var(--accent-yellow);
+    color: var(--primary-blue);
+}
+
+/* Hero section */
+.hero-section {
+    background: linear-gradient(to right, var(--primary-blue), #0C4CB8) !important;
+}
+
+/* Banner Promotion Section */
+.banner-promo-section {
+    background: var(--soft-yellow);
+    padding: 60px 0;
+}
+
+.banner-promo-card {
+    position: relative;
+    min-height: 300px;
+    overflow: hidden;
+}
+
+.banner-promo-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('/images/banner-2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    z-index: 1;
+}
+
+/* Overlay gradient để text dễ đọc */
+.banner-promo-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(0, 51, 160, 0.85) 0%, 
+        rgba(11, 61, 145, 0.75) 50%,
+        rgba(95, 184, 74, 0.7) 100%);
+    z-index: 2;
+}
+
+.banner-promo-content {
+    position: relative;
+    z-index: 3;
+}
+
+.banner-promo-text h3 {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    line-height: 1.3;
+}
+
+.banner-promo-text p {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.banner-promo-logo {
+    background: linear-gradient(135deg, var(--green-light), var(--green-dark));
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 768px) {
+    .banner-promo-section {
+        padding: 40px 0;
+    }
+    
+    .banner-promo-content {
+        padding: 24px !important;
+        text-align: center !important;
+    }
+    
+    .banner-promo-text h3 {
+        font-size: 24px !important;
+    }
+    
+    .banner-promo-image {
+        display: none;
+    }
+}
+
+/* Badge/Tag styles */
+.badge-field {
+    background-color: var(--accent-yellow);
+    color: var(--primary-blue);
+}
+
+

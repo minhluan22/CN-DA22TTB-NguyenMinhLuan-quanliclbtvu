@@ -1,0 +1,297 @@
+// ============================================
+// ERD SCHEMA - DBML FORMAT
+// File này có thể import vào dbdiagram.io để vẽ ERD online
+// Website: https://dbdiagram.io
+// ============================================
+
+Project CLB_Management {
+  database_type: 'MySQL'
+  Note: 'Hệ thống quản lý Câu lạc bộ Sinh viên'
+}
+
+// ============================================
+// BẢNG CHÍNH
+// ============================================
+
+Table roles {
+  id bigint [pk, increment]
+  name varchar(255) [not null, note: 'Admin, Student, Guest']
+  description text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table users {
+  id bigint [pk, increment]
+  name varchar(255) [not null]
+  email varchar(255) [not null, unique]
+  email_verified_at timestamp
+  password varchar(255) [not null]
+  student_code varchar(50) [note: 'Mã số sinh viên']
+  role_id bigint [ref: > roles.id, note: 'FK: Vai trò']
+  status tinyint [default: 1, note: '1: Hoạt động, 0: Khóa']
+  class varchar(50)
+  phone varchar(20)
+  gender enum [note: 'male, female, other']
+  date_of_birth date
+  department varchar(255)
+  bio text
+  avatar varchar(255)
+  last_activity timestamp
+  two_factor_enabled tinyint [default: 0]
+  devices json
+  email_notifications tinyint [default: 1]
+  event_notifications tinyint [default: 1]
+  club_notifications tinyint [default: 1]
+  language varchar(10) [default: 'vi']
+  dark_mode tinyint [default: 0]
+  remember_token varchar(100)
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table clubs {
+  id bigint [pk, increment]
+  name varchar(255) [not null]
+  slug varchar(255) [not null, unique]
+  code varchar(255) [unique, note: 'Mã CLB: CLB001']
+  student_code varchar(50)
+  description text
+  activity_goals text [note: 'Mục tiêu hoạt động']
+  logo varchar(255)
+  banner varchar(255)
+  owner_id bigint [ref: > users.id, note: 'FK: Chủ nhiệm']
+  status enum [default: 'pending', note: 'active, pending, archived']
+  field varchar(255) [note: 'Lĩnh vực (tiếng Anh)']
+  club_type varchar(255) [note: 'Loại CLB (tiếng Anh)']
+  chairman varchar(255) [note: 'Tên chủ nhiệm']
+  members int [default: 0]
+  activity text
+  establishment_date date
+  email varchar(255)
+  fanpage varchar(255)
+  phone varchar(20)
+  social_links text [note: 'JSON: Facebook, Discord, Zalo']
+  meeting_place varchar(255)
+  meeting_schedule varchar(255)
+  approval_mode enum [default: 'manual', note: 'auto, manual']
+  activity_approval_mode enum [default: 'school', note: 'school, chairman']
+  is_public tinyint [default: 1]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table club_members {
+  id bigint [pk, increment]
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB']
+  user_id bigint [ref: > users.id, note: 'FK: Thành viên']
+  position enum [default: 'member', note: 'chairman, vice_chairman, executive, member']
+  status enum [default: 'pending', note: 'pending, approved, rejected, suspended, left']
+  joined_date date
+  join_count int [default: 1, note: 'Số lần tham gia']
+  notes text
+  created_at timestamp
+  updated_at timestamp
+  
+  indexes {
+    (club_id, user_id) [unique, note: 'Mỗi user chỉ là thành viên 1 lần trong CLB']
+  }
+}
+
+Table club_registrations {
+  id bigint [pk, increment]
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB']
+  user_id bigint [ref: > users.id, note: 'FK: Người đăng ký']
+  reason text [note: 'Lý do tham gia']
+  status enum [default: 'pending', note: 'pending, approved, rejected']
+  created_at timestamp
+  updated_at timestamp
+  
+  indexes {
+    (club_id, user_id) [unique, note: 'Mỗi user chỉ đăng ký 1 lần']
+  }
+}
+
+Table club_proposals {
+  id bigint [pk, increment]
+  user_id bigint [ref: > users.id, note: 'FK: Người đề xuất']
+  club_name varchar(255) [not null]
+  field varchar(255)
+  objectives text
+  reason text
+  planned_activities text
+  expected_members int [default: 0]
+  advisor_name varchar(255)
+  advisor_email varchar(255)
+  proposer_name varchar(255) [not null]
+  proposer_email varchar(255) [not null]
+  proposer_student_code varchar(50) [not null]
+  member_list_file varchar(255)
+  activity_plan_file varchar(255)
+  status enum [default: 'pending', note: 'pending, approved, rejected']
+  admin_notes text
+  reviewed_by bigint [ref: > users.id, note: 'FK: Admin duyệt']
+  reviewed_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table events {
+  id bigint [pk, increment]
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB tổ chức']
+  title varchar(255) [not null]
+  description text
+  start_at datetime
+  end_at datetime
+  location varchar(255)
+  status enum [default: 'upcoming', note: 'upcoming, ongoing, finished, cancelled']
+  approval_status enum [default: 'pending', note: 'pending, approved, rejected, disabled']
+  created_by bigint [ref: > users.id, note: 'FK: Người tạo']
+  activity_type varchar(100)
+  max_participants int
+  violation_type varchar(255) [note: 'Loại vi phạm']
+  violation_severity enum [note: 'light, medium, serious']
+  violation_status enum [note: 'pending, processing, processed']
+  violation_notes text [note: 'Ghi chú vi phạm']
+  violation_detected_at datetime
+  proposal_type varchar(100)
+  proposal_reason text
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp [note: 'Soft delete']
+}
+
+Table event_registrations {
+  id bigint [pk, increment]
+  event_id bigint [ref: > events.id, note: 'FK: Hoạt động']
+  user_id bigint [ref: > users.id, note: 'FK: Người đăng ký']
+  status enum [default: 'pending', note: 'pending, approved, rejected, attended, absent']
+  activity_points int [default: 0, note: 'Điểm hoạt động']
+  notes text
+  created_at timestamp
+  updated_at timestamp
+  
+  indexes {
+    (event_id, user_id) [unique, note: 'Mỗi user chỉ đăng ký 1 lần']
+  }
+}
+
+Table regulations {
+  id bigint [pk, increment]
+  code varchar(255) [not null, unique, note: 'Mã nội quy']
+  title varchar(255) [not null]
+  content text [not null]
+  scope enum [default: 'all_clubs', note: 'all_clubs, specific_club']
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB cụ thể (nếu scope = specific_club)']
+  severity enum [default: 'medium', note: 'light, medium, serious']
+  status enum [default: 'active', note: 'active, inactive']
+  issued_date date [not null]
+  created_by bigint [ref: > users.id, note: 'FK: Người tạo']
+  updated_by bigint [ref: > users.id, note: 'FK: Người cập nhật']
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp [note: 'Soft delete']
+}
+
+Table violations {
+  id bigint [pk, increment]
+  user_id bigint [ref: > users.id, note: 'FK: Sinh viên vi phạm']
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB vi phạm']
+  regulation_id bigint [ref: > regulations.id, note: 'FK: Nội quy bị vi phạm']
+  description text [not null]
+  severity enum [default: 'medium', note: 'light, medium, serious']
+  violation_date datetime [not null]
+  recorded_by bigint [ref: > users.id, note: 'FK: Người ghi nhận']
+  status enum [default: 'pending', note: 'pending, processed, monitoring']
+  discipline_type enum [note: 'warning, reprimand, suspension, expulsion, ban']
+  discipline_reason text
+  discipline_period_start date
+  discipline_period_end date
+  processed_by bigint [ref: > users.id, note: 'FK: Admin xử lý']
+  processed_at timestamp
+  created_at timestamp
+  updated_at timestamp
+  deleted_at timestamp [note: 'Soft delete']
+}
+
+Table notifications {
+  id bigint [pk, increment]
+  title varchar(255) [not null]
+  body text
+  sender_id bigint [ref: > users.id, note: 'FK: Người gửi']
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB (nếu có)']
+  type varchar(100)
+  source varchar(100) [note: 'system, admin, club']
+  is_public tinyint [default: 1]
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table notification_recipients {
+  id bigint [pk, increment]
+  notification_id bigint [ref: > notifications.id, note: 'FK: Thông báo']
+  user_id bigint [ref: > users.id, note: 'FK: User nhận (null nếu là CLB)']
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB nhận (null nếu là user)']
+  is_read tinyint [default: 0]
+  read_at timestamp
+  created_at timestamp
+  updated_at timestamp
+  
+  indexes {
+    (notification_id, user_id)
+    (notification_id, club_id)
+    is_read
+  }
+}
+
+Table admin_logs {
+  id bigint [pk, increment]
+  admin_id bigint [ref: > users.id, note: 'FK: Admin thực hiện']
+  action varchar(255) [not null]
+  model_type varchar(255)
+  model_id bigint
+  notes text
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table support_requests {
+  id bigint [pk, increment]
+  user_id bigint [ref: > users.id, note: 'FK: Người yêu cầu']
+  club_id bigint [ref: > clubs.id, note: 'FK: CLB (nếu có)']
+  subject varchar(255) [not null]
+  message text [not null]
+  status enum [default: 'pending', note: 'pending, in_progress, resolved, closed']
+  response text
+  responded_by bigint [ref: > users.id, note: 'FK: Người phản hồi']
+  responded_at timestamp
+  created_at timestamp
+  updated_at timestamp
+}
+
+Table system_configs {
+  id bigint [pk, increment]
+  key varchar(255) [not null, unique]
+  value text
+  description text
+  created_at timestamp
+  updated_at timestamp
+}
+
+// ============================================
+// GHI CHÚ QUAN HỆ
+// ============================================
+
+// Quan hệ 1-N: users -> clubs (owner_id)
+// Quan hệ 1-N: users -> club_members
+// Quan hệ 1-N: clubs -> club_members
+// Quan hệ 1-N: clubs -> events
+// Quan hệ 1-N: events -> event_registrations
+// Quan hệ 1-N: users -> event_registrations
+// Quan hệ 1-N: clubs -> regulations (optional)
+// Quan hệ 1-N: regulations -> violations
+// Quan hệ 1-N: users -> violations (user_id, recorded_by, processed_by)
+// Quan hệ 1-N: notifications -> notification_recipients
+// Quan hệ 1-N: users -> notifications (sender_id)
+// Quan hệ 1-N: clubs -> notifications (club_id)
+

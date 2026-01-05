@@ -1,0 +1,71 @@
+⚠️ QUAN TRỌNG - ĐỌC NGAY! ⚠️
+
+NẾU BẠN VẪN THẤY MÀU VÀNG TRÊN TRANG WEB:
+
+HÃY XÓA CACHE TRÌNH DUYỆT NGAY!
+
+===========================================
+CÁCH XÓA CACHE NHANH NHẤT (5 GIÂY):
+===========================================
+
+Windows/Linux:
+    Ctrl + Shift + R
+    hoặc
+    Ctrl + F5
+
+macOS:
+    Cmd + Shift + R
+
+===========================================
+CÁCH XÓA CACHE ĐẦY ĐỦ (30 GIÂY):
+===========================================
+
+1. Nhấn: Ctrl + Shift + Delete
+2. Chọn: "Cached images and files"
+3. Chọn: "All time" (Toàn bộ thời gian)
+4. Click: "Clear data"
+5. Đóng và mở lại trình duyệt
+6. Truy cập lại trang
+
+===========================================
+TEST NHANH (INCOGNITO MODE):
+===========================================
+
+Ctrl + Shift + N (Chrome/Edge)
+Ctrl + Shift + P (Firefox)
+
+===========================================
+TẠI SAO PHẢI XÓA CACHE?
+===========================================
+
+Hệ thống đã được cập nhật hoàn toàn:
+- Xóa tất cả màu vàng nhạt (#FFF3A0, #FFF7B0)
+- Thay bằng màu xám nhạt (#f8f9fa)
+- Giao diện chuyên nghiệp hơn
+
+Nhưng trình duyệt của bạn vẫn đang dùng
+file CSS CŨ được lưu trong cache!
+
+===========================================
+KẾT QUẢ SAU KHI XÓA CACHE:
+===========================================
+
+✅ Background: Xám nhạt (#f8f9fa)
+✅ Cards: Trắng sạch
+✅ Tables: Hover xám nhẹ
+✅ Giao diện chuyên nghiệp
+
+===========================================
+VẪN THẤY MÀU VÀNG?
+===========================================
+
+1. Đóng HOÀN TOÀN trình duyệt
+2. Mở lại và test
+3. Nếu vẫn không được, dùng Incognito mode
+
+===========================================
+
+Xem hướng dẫn chi tiết: CACHE_CLEAR_INSTRUCTIONS.md
+
+Cập nhật: 24/12/2025
+

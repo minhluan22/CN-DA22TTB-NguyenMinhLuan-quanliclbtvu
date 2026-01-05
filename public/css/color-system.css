@@ -1,0 +1,246 @@
+/* =========================================================
+   HỆ THỐNG MÀU CHUẨN CHUYÊN NGHIỆP - CLBWeb Laravel
+   Updated: 2025-12-25
+   Bảng màu: #0033A0, #0B3D91, #8EDC6E, #5FB84A, #FFE600
+   Loại bỏ: #FFF3A0, #FFF7B0 (vàng nhạt)
+========================================================= */
+
+:root {
+    /* Bảng màu chính */
+    --blue-dark-bg: #0033A0;
+    --blue-dark-shadow: #0B3D91;
+    --blue-dark-hover: #0C4CB8;
+    --green-light: #8EDC6E;
+    --green-dark: #5FB84A;
+    --yellow-bright: #FFE600;
+    --yellow-dark: #ffd500;
+    
+    /* Background colors - Yellow Theme */
+    --bg-main: #FFF3A0;              /* Vàng nhạt */
+    --bg-card: #FFF3A0;              /* Vàng nhạt */
+    --bg-table-hover: rgba(0,0,0,0.04);  /* Xám rất nhạt */
+    --bg-pending: rgba(255, 193, 7, 0.1); /* Vàng Bootstrap nhạt */
+    
+    /* Alert colors - Yellow Theme */
+    --alert-warning-bg: #FFF3A0;     /* Vàng nhạt */
+    --alert-danger-bg: #FFF3A0;      /* Vàng nhạt */
+    --alert-success-bg: #e8f5e9;     /* Xanh lá nhạt */
+    --alert-info-bg: #e3f2fd;        /* Xanh dương nhạt */
+    
+    /* Biến màu chính (tương thích ngược) */
+    --primary-blue: #0B3D91;
+    --primary-blue-dark: #0033A0;
+    --primary-blue-hover: #0C4CB8;
+    --accent-yellow: #FFE600;
+    
+    /* Màu hệ thống */
+    --success: #5FB84A;
+    --success-light: #8EDC6E;
+    --danger: #B84A5F;
+    --danger-dark: #9A3D4F;
+    --warning: #FFE600;
+    --info: #0B3D91;
+    --info-dark: #0033A0;
+    --primary: #0B3D91;
+    --secondary: #6c757d;
+    
+    /* Màu text và border */
+    --text-dark: #1f1f1f;
+    --text-light: #ffffff;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+}
+
+/* =========================================================
+   OVERRIDE BOOTSTRAP BADGE COLORS
+========================================================= */
+.bg-success {
+    background-color: var(--green-dark) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-danger {
+    background-color: var(--danger) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-warning {
+    background-color: var(--warning) !important;
+    color: var(--text-dark) !important;
+}
+
+/* Badge warning with text-dark for readability */
+.badge.bg-warning.text-dark {
+    background-color: var(--warning) !important;
+    color: var(--text-dark) !important;
+}
+
+.bg-info {
+    background-color: var(--blue-dark-shadow) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-primary {
+    background-color: var(--blue-dark-shadow) !important;
+    color: var(--text-light) !important;
+}
+
+.bg-secondary {
+    background-color: #6b7280 !important;
+    color: var(--text-light) !important;
+}
+
+/* =========================================================
+   OVERRIDE BOOTSTRAP BUTTON COLORS
+========================================================= */
+.btn-success {
+    background-color: var(--green-dark) !important;
+    border-color: var(--green-dark) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-success:hover {
+    background-color: var(--green-light) !important;
+    border-color: var(--green-light) !important;
+}
+
+.btn-danger {
+    background-color: var(--danger) !important;
+    border-color: var(--danger) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-dark) !important;
+    border-color: var(--danger-dark) !important;
+}
+
+.btn-warning {
+    background-color: var(--warning) !important;
+    border-color: var(--warning) !important;
+    color: var(--text-dark) !important;
+}
+
+.btn-warning:hover {
+    background-color: var(--yellow-dark) !important;
+    border-color: var(--yellow-dark) !important;
+    color: var(--text-dark) !important;
+}
+
+.btn-info {
+    background-color: var(--blue-dark-shadow) !important;
+    border-color: var(--blue-dark-shadow) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-info:hover {
+    background-color: var(--blue-dark-bg) !important;
+    border-color: var(--blue-dark-bg) !important;
+}
+
+.btn-primary {
+    background-color: var(--blue-dark-shadow) !important;
+    border-color: var(--blue-dark-shadow) !important;
+    color: var(--text-light) !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--blue-dark-bg) !important;
+    border-color: var(--blue-dark-bg) !important;
+}
+
+/* =========================================================
+   OVERRIDE BOOTSTRAP ALERT COLORS - Professional
+========================================================= */
+.alert-success {
+    background-color: var(--alert-success-bg) !important;
+    border-color: var(--success) !important;
+    color: var(--text-dark) !important;
+}
+
+.alert-danger {
+    background-color: var(--alert-danger-bg) !important;
+    border-color: var(--danger) !important;
+    color: var(--text-dark) !important;
+}
+
+.alert-warning {
+    background-color: var(--alert-warning-bg) !important;
+    border-color: var(--warning) !important;
+    color: var(--text-dark) !important;
+}
+
+.alert-info {
+    background-color: var(--alert-info-bg) !important;
+    border-color: var(--info) !important;
+    color: var(--text-dark) !important;
+}
+
+/* =========================================================
+   OVERRIDE TEXT COLORS
+========================================================= */
+.text-success {
+    color: var(--green-dark) !important;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-warning {
+    color: var(--yellow-bright) !important;
+}
+
+.text-info {
+    color: var(--blue-dark-shadow) !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+/* =========================================================
+   BACKGROUND & TABLE STYLES - Professional
+========================================================= */
+body {
+    background: #FFF3A0 !important;
+}
+
+.main {
+    background: #FFF3A0 !important;
+}
+
+.card {
+    background: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    transform: translateY(-2px) !important;
+}
+
+.dashboard-card {
+    background: #ffffff !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.dashboard-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    transform: translateY(-2px) !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--bg-table-hover) !important;
+}
+
+.table-warning {
+    background-color: var(--bg-pending) !important;
+}
+
+.table-light {
+    background-color: #f8f9fa !important;
+}
+
